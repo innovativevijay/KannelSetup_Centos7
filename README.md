@@ -2,9 +2,12 @@
 
 ## Table of Contents
 
-- [Installation](#test)
+- [Centos Update](#Update)
+- [Dependencies](#Dependecies)
+- [Kannel Download And Install](#Download)
+- [Manual Kannal Start](#Manual)
 
-### Step 1: Update System:
+### Update System:
 ----------------------
 
 Note : Start by updating your package repositories and upgrading installed packages:
@@ -13,7 +16,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-### Step2 : Dependecies : 
+### Dependecies : 
 ```sh
  yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
  yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
@@ -25,7 +28,7 @@ sudo apt upgrade
  cp bison /usr/local/bin/bison && cp bison /usr/bin/bison
  cd .. && cd .. && rm -rf bison-2.7.tar.gz bison-2.7 
 ```
-### Step 3 : Download Kannel and Complie And Install
+### Download Kannel and Complie And Install
 ```sh
 cmd : curl -O -k https://www.kannel.org/download/1.4.5/gateway-1.4.5.tar.gz
 cmd : tar -xvzf gateway-1.4.5.tar.gz
@@ -36,7 +39,7 @@ cmd : make
 cmd : make install
 ```
 
-# Command To Start Kannel Manual
+# Manual Start Kannel 
 ```sh		
 --start kannel
 /usr/local/gateway-1.4.5/gw/bearerbox  /usr/local/gateway-1.4.5/gw/smskannel.conf &> /dev/null &
