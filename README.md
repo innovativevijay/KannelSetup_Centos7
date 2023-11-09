@@ -83,7 +83,7 @@ cmd : crontab -e
 ```sh	
 	* * * * * usr/local/scripts/checkKannel
 ```
-
+```sh
 * * * * * command-to-be-executed
 - - - - -
 | | | | |
@@ -92,7 +92,7 @@ cmd : crontab -e
 | | +--------- Day of the month (1 - 31)
 | +----------- Hour (0 - 23)
 +------------- Minute (0 - 59)
-
+```
 # Required Nagois for working cronjob code
 Note:
 Nagios is a monitoring system that keeps an eye on your computers and networks. It alerts you when things go wrong and lets you know when they get better. It helps organizations identify and resolve IT infrastructure issues, ensuring that critical systems are always up and running smoothly.
