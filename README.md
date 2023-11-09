@@ -38,6 +38,7 @@ cmd : make install
 /usr/local/gateway-1.4.5/gw/bearerbox  /usr/local/gateway-1.4.5/gw/smskannel.conf &> /dev/null &
 /usr/local/gateway-1.4.5/gw/smsbox  /usr/local/gateway-1.4.5/gw/smskannel.conf &> /dev/null &
 ```
+Note:
 The command '&> /dev/null &' is used to run a program in the background while discarding its output. The `&` at the end makes the command run in the background, and `>/dev/null` redirects both standard output and standard error to `/dev/null`, effectively silencing any output produced by the command. This is often used when you don't need to see or log the output of a background process.
 
 *******************************************************************************************************************************
