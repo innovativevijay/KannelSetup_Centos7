@@ -84,6 +84,8 @@ cmd : crontab -e
 
 
 # Required Nagois for working cronjob code
+Note:
+Nagios is a monitoring system that keeps an eye on your computers and networks. It alerts you when things go wrong and lets you know when they get better. It helps organizations identify and resolve IT infrastructure issues, ensuring that critical systems are always up and running smoothly.
 
 ## Step 1 : System Update
 ```sh
