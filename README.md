@@ -5,7 +5,9 @@
 - [Centos Update](#Update)
 - [Dependencies](#Dependecies)
 - [Kannel Download And Install](#Download)
-- [Manual Kannal Start](#Manual)
+- [Manual Start Kannal](#Manual)
+- [Automatically Start Kannal](#Automatically)
+- [Download And Install Nagios](#Nagios)
 
 ### Update System:
 ----------------------
@@ -28,7 +30,8 @@ sudo apt upgrade
  cp bison /usr/local/bin/bison && cp bison /usr/bin/bison
  cd .. && cd .. && rm -rf bison-2.7.tar.gz bison-2.7 
 ```
-### Download Kannel and Complie And Install
+### Download
+Download Kannel then build kannel project and finally install kannel.
 ```sh
 cmd : curl -O -k https://www.kannel.org/download/1.4.5/gateway-1.4.5.tar.gz
 cmd : tar -xvzf gateway-1.4.5.tar.gz
@@ -50,7 +53,8 @@ Note:
 The command '&> /dev/null &' is used to run a program in the background while discarding its output. The `&` at the end makes the command run in the background, and `>/dev/null` redirects both standard output and standard error to `/dev/null`, effectively silencing any output produced by the command. This is often used when you don't need to see or log the output of a background process.
 
 *******************************************************************************************************************************
-# Start Automatically Process Using Crone Job
+# Automatically
+Automatically start kannel using cronjob.
 
 ## Step 1: Create File Like checkKannel
 ```sh
@@ -121,7 +125,8 @@ cmd : sudo groupadd nagcmd
 cmd : sudo usermod -a -G nagcmd nagios
 ```
 
-## Step 5 : Download and Compile Nagios Core:
+## Nagios
+Download and Compile Nagios Core:
 ```sh
 
 cmd : wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.6.tar.gz
