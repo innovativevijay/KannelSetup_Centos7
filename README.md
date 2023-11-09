@@ -1,13 +1,13 @@
 # Kannel Installation On Centos 7
 
 ## Kannel Installation
-====================>
+
 
 ### Step 1: Update System:
 ----------------------
-```sh
-Start by updating your package repositories and upgrading installed packages:
 
+Note : Start by updating your package repositories and upgrading installed packages:
+```sh
 cmd : sudo apt update
 cmd : sudo apt upgrade
 ```
