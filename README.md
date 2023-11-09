@@ -5,9 +5,11 @@
 - [Centos Update](#Update)
 - [Dependencies](#Dependecies)
 - [Kannel Download And Install](#Download)
-- [Manual Start Kannal](#Manual)
+- [Manual Start Kannel](#Manual)
 - [Automatically Start Kannal](#Automatically)
 - [Download And Install Nagios](#Nagios)
+- [LOG File Rotation](#Rotation)
+- [Enable Kannel Port](#EnablePort)
 
 ### Update System:
 ----------------------
@@ -165,7 +167,8 @@ cmd : sudo systemctl enable nagios
 ```
 
 
-# Enable Port (If Sometime give error then reboot server then try again)
+# EnbalePort 
+Enable Kannel Port For Send Sms On Kannel, Check kannel status etc. (If Sometime give error then reboot server then try again)
 ```sh
 cmd : sudo systemctl status firewalld
 cmd : sudo firewall-cmd --zone=public --add-port=1403/tcp --permanent
@@ -174,8 +177,8 @@ cmd : sudo firewall-cmd --zone=public --add-port=13013/tcp --permanent
 cmd : firewall-cmd --reload
 ```
 
-# test
-# Kannel Log File Rotation Setting
+# Rotation
+Kannel Log File Rotation Setting
 ```sh
 cmd : cd /etc/logrotate.d
 cmd : vi kannel
