@@ -84,6 +84,14 @@ cmd : crontab -e
 	* * * * * usr/local/scripts/checkKannel
 ```
 
+* * * * * command-to-be-executed
+- - - - -
+| | | | |
+| | | | +----- Day of the week (0 - 6) (Sunday = 0)
+| | | +------- Month (1 - 12)
+| | +--------- Day of the month (1 - 31)
+| +----------- Hour (0 - 23)
++------------- Minute (0 - 59)
 
 # Required Nagois for working cronjob code
 Note:
