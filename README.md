@@ -16,7 +16,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-### Dependecies : 
+# Dependecies
 ```sh
  yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
  yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
@@ -39,7 +39,8 @@ cmd : make
 cmd : make install
 ```
 
-# Manual Start Kannel 
+# Manual
+Start Kannel Manually
 ```sh		
 --start kannel
 /usr/local/gateway-1.4.5/gw/bearerbox  /usr/local/gateway-1.4.5/gw/smskannel.conf &> /dev/null &
