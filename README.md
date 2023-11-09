@@ -1,5 +1,7 @@
 # Kannel Installation On Centos 7
 
+"Streamline your SMS gateway setup with our project for Kannel installation on CentOS 7. Kannel is a robust open-source solution for SMS and MMS messaging services. Our project provides a straightforward, step-by-step guide to easily configure and deploy Kannel on CentOS 7, enabling you to efficiently manage SMS communication for your applications or services. Improve your messaging capabilities and enhance communication with this user-friendly installation guide for CentOS 7."
+
 ## Table of Contents
 
 - [Centos Update](#Update)
@@ -168,7 +170,7 @@ cmd : sudo systemctl enable nagios
 ```
 
 
-# EnbalePort 
+# EnablePort 
 Enable Kannel Port For Send Sms On Kannel, Check kannel status etc. (If Sometime give error then reboot server then try again)
 ```sh
 cmd : sudo systemctl status firewalld
