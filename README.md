@@ -49,7 +49,7 @@ cmd : cd usr/local/scripts
 cmd : vi checkKannel
 ```	
 - Then Paste Below Code in file and then save file
-	```sh
+```sh
 	if /usr/local/nagios/libexec/check_tcp localhost -p 1403 | grep "Connection refused"
 	then
 	#killall -9 bearerbox smsbox
@@ -67,10 +67,11 @@ cmd : vi checkKannel
 	fi
  ```
  
-	Note : above use port 1403 is admin port from config and 13013 is send sms user port from config file
+Note : above use port 1403 is admin port from config and 13013 is send sms user port from config file
 	
-	- Give Permission To File For Run (below Command set this permission -rwxr-xr-x )
+- Give Permission To File For Run (below Command set this permission -rwxr-xr-x )
 ```sh
+
 cmd : chmod 755 checkKannel
 ```
 ```sh
