@@ -32,7 +32,7 @@ cmd : make
 cmd : make install
 ```
 
-		## Command To Start Kannel Manual
+# Command To Start Kannel Manual
 ```sh		
 --start kannel
 /usr/local/gateway-1.4.5/gw/bearerbox  /usr/local/gateway-1.4.5/gw/smskannel.conf &> /dev/null &
@@ -40,18 +40,16 @@ cmd : make install
 ```
 
 *******************************************************************************************************************************
-		Start Automatically Process Using Crone Job
+# Start Automatically Process Using Crone Job
 
-Step 1: Create File Like checkKannel
-------------------------------------
-
+## Step 1: Create File Like checkKannel
+```sh
 cmd : mkdir usr/local/scripts
 cmd : cd usr/local/scripts
 cmd : vi checkKannel
-	
-	Then Paste Below Code in file and then save file
-	------------------------------------------------
-
+```	
+- Then Paste Below Code in file and then save file
+	```sh
 	if /usr/local/nagios/libexec/check_tcp localhost -p 1403 | grep "Connection refused"
 	then
 	#killall -9 bearerbox smsbox
@@ -67,43 +65,42 @@ cmd : vi checkKannel
 	sleep 4
 	/usr/local/gateway-1.4.5/gw/smsbox /usr/local/gateway-1.4.5/gw/smskannel.conf &> /dev/null &
 	fi
-	------------------------------------------------------------------------------------------------------
+ ```
+ 
 	Note : above use port 1403 is admin port from config and 13013 is send sms user port from config file
-
 	
-	Give Permission To File For Run (below Command set this permission -rwxr-xr-x )
-
+	- Give Permission To File For Run (below Command set this permission -rwxr-xr-x )
+```sh
 cmd : chmod 755 checkKannel
-
-
+```
+```sh
 cmd : crontab -e
-	
-	Then paste below code in file
-	----------------------------
+```
+- Then paste below code in file
+```sh	
 	* * * * * usr/local/scripts/checkKannel
+```
 
 
-*******************************************************************************************************************************************
-	Required Nagois for working cronjob code
+# Required Nagois for working cronjob code
 
-Step 1 : System Update
----------------------
+## Step 1 : System Update
+```sh
 cmd : sudo yum update
-
-Step 2 : Install Required Dependencies:
----------------------------------------
-
+```
+## Step 2 : Install Required Dependencies:
+```sh
 cmd : sudo yum install -y gcc glibc glibc-common wget unzip httpd php gd gd-devel perl postfix
-
-Step 3 : Create a Nagios User and Group:
------------------------------------------
+```
+## Step 3 : Create a Nagios User and Group:
+```sh
 cmd : sudo useradd nagios
 cmd : sudo groupadd nagcmd
 cmd : sudo usermod -a -G nagcmd nagios
+```
 
-
-Step 5 : Download and Compile Nagios Core:
-------------------------------------------
+## Step 5 : Download and Compile Nagios Core:
+```sh
 
 cmd : wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.6.tar.gz
 cmd : tar -xzf nagios-4.4.6.tar.gz
@@ -114,15 +111,14 @@ cmd : sudo make install
 cmd : sudo make install-commandmode
 cmd : sudo make install-init
 cmd : sudo make install-config
+```
 
-
-Step 6 : Create a Nagios Web User Account:
------------------------------------------
-
+## Step 6 : Create a Nagios Web User Account:
+```sh
 cmd : sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
-
-Step 7 : Download and Install Nagios Plugins:
-----------------------------------------------
+```
+## Step 7 : Download and Install Nagios Plugins:
+```sh
 
 cmd : cd ~
 cmd : wget https://nagios-plugins.org/download/nagios-plugins-2.3.3.tar.gz
@@ -131,30 +127,32 @@ cmd : cd nagios-plugins-2.3.3
 cmd : ./configure --with-nagios-user=nagios --with-nagios-group=nagios
 cmd : make
 cmd : sudo make install
-
-Step 8 : Start and Enable Apache and Nagios Services:
-------------------------------------------------------
+```
+## Step 8 : Start and Enable Apache and Nagios Services:
+```sh
 
 cmd : sudo systemctl start httpd
 cmd : sudo systemctl enable httpd
 cmd : sudo systemctl start nagios
 cmd : sudo systemctl enable nagios
+```
 
-********************************************************************************************************************
 
-Enable Port (If Sometime give error then reboot server then try again)
-
+# Enable Port (If Sometime give error then reboot server then try again)
+```sh
 cmd : sudo systemctl status firewalld
 cmd : sudo firewall-cmd --zone=public --add-port=1403/tcp --permanent
 cmd : sudo firewall-cmd --zone=public --add-port=1505/tcp --permanent
 cmd : sudo firewall-cmd --zone=public --add-port=13013/tcp --permanent
 cmd : firewall-cmd --reload
+```
 
 
-***********************************************************************************************************************
-	Kannel Log File Rotation Setting
+# Kannel Log File Rotation Setting
+```sh
 cmd : cd /etc/logrotate.d
 cmd : vi kannel
+```
 
 	File Format
 	/var/log/kannel/*.log {
