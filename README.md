@@ -1,5 +1,9 @@
 # Kannel Installation On Centos 7
 
+## Table of Contents
+
+- [Installation](#Step2)
+
 ### Step 1: Update System:
 ----------------------
 
@@ -9,7 +13,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-### Step 2 : Dependecies : 
+### Step2 : Dependecies : 
 ```sh
  yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
  yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
