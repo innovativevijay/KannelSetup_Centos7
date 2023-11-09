@@ -170,6 +170,6 @@ cmd : vi kannel
               postrotate
                     killall -HUP bearerbox smsbox || true > /dev/null 2> /dev/null
               endscript
-}
+	}
 
 ----------------------------------------------------------------------------
