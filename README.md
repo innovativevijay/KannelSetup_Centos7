@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [Installation](#Step2)
+- [Installation](#test)
 
 ### Step 1: Update System:
 ----------------------
@@ -165,7 +165,7 @@ cmd : sudo firewall-cmd --zone=public --add-port=13013/tcp --permanent
 cmd : firewall-cmd --reload
 ```
 
-
+# test
 # Kannel Log File Rotation Setting
 ```sh
 cmd : cd /etc/logrotate.d
