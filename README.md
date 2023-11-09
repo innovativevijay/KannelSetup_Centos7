@@ -8,8 +8,9 @@
 - [Manual Start Kannel](#Manual)
 - [Automatically Start Kannal](#Automatically)
 - [Download And Install Nagios](#Nagios)
-- [LOG File Rotation](#Rotation)
 - [Enable Kannel Port](#EnablePort)
+- [LOG File Rotation](#Rotation)
+
 
 ### Update System:
 ----------------------
