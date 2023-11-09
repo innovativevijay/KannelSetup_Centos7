@@ -83,6 +83,7 @@ cmd : crontab -e
 ```sh	
 	* * * * * usr/local/scripts/checkKannel
 ```
+Note : 
 ```sh
 * * * * * command-to-be-executed
 - - - - -
