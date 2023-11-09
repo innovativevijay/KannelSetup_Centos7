@@ -1,32 +1,28 @@
 # Kannel Installation On Centos 7
 
-## Kannel Installation
-
-
 ### Step 1: Update System:
 ----------------------
 
 Note : Start by updating your package repositories and upgrading installed packages:
 ```sh
-cmd : sudo apt update
-cmd : sudo apt upgrade
+sudo apt update
+sudo apt upgrade
 ```
 
-Step 2 : Dependecies : 
-----------------------
-
-cmd : yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
-cmd : cd usr/local
-cmd : curl -O https://ftp.gnu.org/gnu/bison/bison-2.7.tar.gz
-cmd : tar zxvf bison-2.7.tar.gz && cd bison-2.7 && ./configure && make && make install && cd src
-cmd : rm -rf  /usr/local/bin/bison 
-cmd : rm -rf /usr/bin/bison
-cmd : cp bison /usr/local/bin/bison && cp bison /usr/bin/bison
-cmd : cd .. && cd .. && rm -rf bison-2.7.tar.gz bison-2.7 
-
-Step 3 : Download Kannel and Complie And Install
---------------------------------------------------
-
+### Step 2 : Dependecies : 
+```sh
+ yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
+ yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
+ cd usr/local
+ curl -O https://ftp.gnu.org/gnu/bison/bison-2.7.tar.gz
+ tar zxvf bison-2.7.tar.gz && cd bison-2.7 && ./configure && make && make install && cd src
+ rm -rf  /usr/local/bin/bison 
+ rm -rf /usr/bin/bison
+ cp bison /usr/local/bin/bison && cp bison /usr/bin/bison
+ cd .. && cd .. && rm -rf bison-2.7.tar.gz bison-2.7 
+```
+### Step 3 : Download Kannel and Complie And Install
+```sh
 cmd : curl -O -k https://www.kannel.org/download/1.4.5/gateway-1.4.5.tar.gz
 cmd : tar -xvzf gateway-1.4.5.tar.gz
 cmd : rm -rf gateway-1.4.5.zip (Remove)
@@ -34,14 +30,14 @@ cmd : cd gateway-1.4.5
 cmd : ./configure   --prefix=/usr/local/gateway-1.4.5
 cmd : make
 cmd : make install
+```
 
-******************************************************************************************************************************
-		Command To Start Kannel Manual
-		------------------------------
+		## Command To Start Kannel Manual
+```sh		
 --start kannel
 /usr/local/gateway-1.4.5/gw/bearerbox  /usr/local/gateway-1.4.5/gw/smskannel.conf &> /dev/null &
 /usr/local/gateway-1.4.5/gw/smsbox  /usr/local/gateway-1.4.5/gw/smskannel.conf &> /dev/null &
-
+```
 
 *******************************************************************************************************************************
 		Start Automatically Process Using Crone Job
