@@ -13,7 +13,7 @@
 - [Enable Kannel Port](#EnablePort)
 - [LOG File Rotation](#Rotation)
 - [Database](#Database)
-- [SMSC Connection Binding And Other Configuration](#Configuration)
+- [SMPP Connection Binding And Other Configuration](#Configuration)
 
 
 ### Update System:
