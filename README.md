@@ -326,7 +326,7 @@ throughput=30
 #msg-id-type = 0x01
 
 
-#----------TLV-------------------------
+#----------Here You Can TLV Parameters Setting-------------------------
 
 group = smpp-tlv
 name = PE_ID
@@ -396,6 +396,7 @@ text = "No service specified"
 max-messages = 11
 concatenation = true
 
+#---------For Database Setting ---------------------------
 
 group = mysql-connection
 id = mydlr
