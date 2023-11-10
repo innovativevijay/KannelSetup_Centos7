@@ -13,6 +13,7 @@
 - [Enable Kannel Port](#EnablePort)
 - [LOG File Rotation](#Rotation)
 - [Database](#Database)
+- [SMSC Connection Binding And Other Configuration](#Configuration)
 
 
 ### Update System:
@@ -221,3 +222,200 @@ CREATE TABLE dlr (smsc varchar(40) DEFAULT NULL,ts varchar(40) DEFAULT NULL, sou
 | destination  | varchar(40)   | YES  |     | NULL               |       |
 | createDate   | timestamp     | NO   |     | CURRENT_TIMESTAMP  |       |
 
+
+# Configuration
+Sample configuration file for binding smpp connections and so on. You will find this file in ** /usr/local/gateway-1.4.5/gw/smskannel.conf **.
+```sh
+# THIS IS A SAMPLE CONFIGURATION FOR SMS KANNEL
+#
+# This basic version is used for system testing. It expects 'fakesmsc' to
+# send messages which are replied with simple fixed text message.
+# It is run like this:
+#
+#  1% gw/bearerbox gw/smskannel.conf
+#  2% gw/smsbox gw/smskannel.conf
+#  3% test/fakesmsc -i 0.1 -m 100 "123 345 text nop"
+#
+# ..all 3 commands in separate shells (or screen sessions)
+# Note that you can run them in different machines but have to
+# add certain command line argument and configuration variables then
+#
+#
+# For any modifications to this file, see Kannel User Guide
+# If that does not help, see Kannel web page (http://www.kannel.org) and
+# various online help and mailing list archives
+#
+# Notes on those who base their configuration on this:
+#  1) check security issues! (allowed IPs, passwords and ports)
+#  2) groups cannot have empty rows inside them!
+#  3) read the user guide
+#
+# Kalle Marjola for Kannel project 2001, 2004
+
+#---------------------------------------------
+# CORE
+#
+# There is only one core group and it sets all basic settings
+# of the bearerbox (and system). You should take extra notes on
+# configuration variables like 'store-file' (or 'store-dir'),
+# 'admin-allow-ip' and 'access.log'
+
+
+group = core
+admin-port = 1403
+smsbox-port = 1505
+admin-password = bar
+#status-password = foo
+#admin-deny-ip = ""
+#admin-allow-ip = ""
+log-file = "/var/log/kannel/kannel.log"
+#log-level = 0
+box-deny-ip = "*.*.*.*"
+box-allow-ip = "127.0.0.1"
+#unified-prefix = "+358,00358,0;+,00"
+access-log = "/var/log/kannel/access.log"
+log-level = 1
+store-type = file
+store-file = "/root/kannel.store"
+#ssl-server-cert-file = "cert.pem"
+#ssl-server-key-file = "key.pem"
+#ssl-certkey-file = "mycertandprivkeyfile.pem"
+
+#---------------------------------------------
+# SMSC CONNECTIONS
+#
+# SMSC connections are created in bearerbox and they handle SMSC specific
+# protocol and message relying. You need these to actually receive and send
+# messages to handset, but can use GSM modems as virtual SMSCs
+
+
+#TX=1 / 10 VJTxn
+group = smsc
+smsc = smpp
+smsc-id = VJTxn
+host = 46.4.70.222
+port = 5555
+smsc-username=demoaccount
+smsc-password=lX7dtjF9
+system-type=SMPP
+transceiver-mode=1
+#connect-allow-ip = 127.0.0.1
+allowed-smsc-id = VJTxn
+#validityperiod = 1440
+#alt-charset = utf-8
+max-pending-submits=20
+throughput=30
+#msg-id-type = 0x01
+
+#TX=2 / 10 VJTxn
+group = smsc
+smsc = smpp
+smsc-id = VJTxn
+host = 46.4.70.222
+port = 5555
+smsc-username=demoaccount
+smsc-password=lX7dtjF9
+system-type=SMPP
+transceiver-mode=1
+#connect-allow-ip = 127.0.0.1
+allowed-smsc-id = VJTxn
+#validityperiod = 1440
+#alt-charset = utf-8
+max-pending-submits=20
+throughput=30
+#msg-id-type = 0x01
+
+
+#----------TLV-------------------------
+
+group = smpp-tlv
+name = PE_ID
+tag = 0x1400
+type = octetstring
+length = 50
+smsc-id = VJTxn
+
+group = smpp-tlv
+name = Template_ID
+tag = 0x1401
+type = octetstring
+length = 50
+smsc-id = VJTxn
+
+#------------
+
+
+#---------------------------------------------
+# SMSBOX SETUP
+#
+# Smsbox(es) do higher-level SMS handling after they have been received from
+# SMS centers by bearerbox, or before they are given to bearerbox for delivery
+
+group = smsbox
+bearerbox-host = 127.0.0.1
+sendsms-port = 13013
+global-sender = 13013
+#sendsms-chars = "0123456789 +-"
+log-file = "/var/log/kannel/smsbox.log"
+log-level = 4
+access-log = "/var/log/kannel/access.log"
+log-level = 4
+
+#---------------------------------------------
+# SEND-SMS USERS
+#
+# These users are used when Kannel smsbox sendsms interface is used to
+# send PUSH sms messages, i.e. calling URL like
+# http://kannel.machine:13013/cgi-bin/sendsms?username=tester&password=foobar...
+
+group = sendsms-user
+username = tester
+password = foobar
+max-messages = 25
+concatenation = true
+#user-deny-ip = ""
+#user-allow-ip = ""
+
+#---------------------------------------------
+# SERVICES
+#
+# These are 'responses' to sms PULL messages, i.e. messages arriving from
+# handsets. The response is based on message content. Only one sms-service is
+# applied, using the first one to match.
+
+group = sms-service
+keyword = nop
+text = "You asked nothing and I did it!"
+
+# There should be always a 'default' service. This service is used when no
+# other 'sms-service' is applied.
+
+group = sms-service
+keyword = default
+text = "No service specified"
+max-messages = 11
+concatenation = true
+
+
+group = mysql-connection
+id = mydlr
+host = localhost
+username ="root"
+password ="Vijay@123"
+database = kannel
+max-connections = 125
+
+group = dlr-db
+id = mydlr
+table = dlr
+field-smsc = smsc
+field-timestamp = ts
+field-destination = destination
+field-source = source
+field-service = service
+field-url = url
+field-mask = mask
+field-status = status
+field-boxc-id = boxc
+
+``
