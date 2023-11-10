@@ -12,6 +12,7 @@
 - [Download And Install Nagios](#Nagios)
 - [Enable Kannel Port](#EnablePort)
 - [LOG File Rotation](#Rotation)
+- [Database](#Database)
 
 
 ### Update System:
@@ -202,4 +203,22 @@ cmd : vi kannel
               endscript
 	}
 
-----------------------------------------------------------------------------
+#Database
+Create Database with name of kannel and get below database script For DLR Table
+```sh
+CREATE TABLE dlr (smsc varchar(40) DEFAULT NULL,ts varchar(40) DEFAULT NULL, source varchar(40) DEFAULT NULL,service varchar(40) DEFAULT NULL,url varchar(255) DEFAULT NULL,mask int(10) DEFAULT NULL,status int(20) DEFAULT NULL,boxc varchar(40) DEFAULT NULL,destination varchar(40) DEFAULT NULL,createDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,KEY smscts (smsc,ts)) ENGINE=MyISAM DEFAULT CHARSET=latin1; 
+```
++-------------+--------------+------+-----+-------------------+-------+
+| Field       | Type         | Null | Key | Default           | Extra |
++-------------+--------------+------+-----+-------------------+-------+
+| smsc        | varchar(40)  | YES  | MUL | NULL              |       |
+| ts          | varchar(40)  | YES  |     | NULL              |       |
+| source      | varchar(40)  | YES  |     | NULL              |       |
+| service     | varchar(40)  | YES  |     | NULL              |       |
+| url         | varchar(255) | YES  |     | NULL              |       |
+| mask        | int(10)      | YES  |     | NULL              |       |
+| status      | int(20)      | YES  |     | NULL              |       |
+| boxc        | varchar(40)  | YES  |     | NULL              |       |
+| destination | varchar(40)  | YES  |     | NULL              |       |
+| createDate  | timestamp    | NO   |     | CURRENT_TIMESTAMP |       |
++-------------+--------------+------+-----+-------------------+-------+
