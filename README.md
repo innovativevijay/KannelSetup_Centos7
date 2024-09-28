@@ -27,8 +27,7 @@ sudo yum upgrade
 
 # Dependecies
 ```sh
- yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
- yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
+  yum install -y openssl-devel  libxml2-devel   texlive-*  m4  gcc-c++ make
  cd usr/local
  curl -O https://ftp.gnu.org/gnu/bison/bison-2.7.tar.gz
  tar zxvf bison-2.7.tar.gz && cd bison-2.7 && ./configure && make && make install && cd src
