@@ -21,8 +21,8 @@
 
 Note : Start by updating your package repositories and upgrading installed packages:
 ```sh
-sudo apt update
-sudo apt upgrade
+sudo yum check-update
+sudo yum upgrade
 ```
 
 # Dependecies
