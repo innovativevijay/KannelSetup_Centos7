@@ -99,7 +99,7 @@ cmd : crontab -e
 ```
 - Then paste below code in file
 ```sh	
-	* * * * * usr/local/scripts/checkKannel
+	* * * * * /usr/local/scripts/checkKannel
 ```
 Note : The format is as follows:
 ```sh
