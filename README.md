@@ -35,7 +35,7 @@ sudo yum upgrade
  rm -rf /usr/bin/bison
  cp bison /usr/local/bin/bison && cp bison /usr/bin/bison
  cd .. && cd .. && rm -rf bison-2.7.tar.gz bison-2.7
-sudo yum install mysql-devel 
+ sudo yum install mysql-devel 
 ```
 ### Download
 Download Kannel then build kannel project and finally install kannel.
