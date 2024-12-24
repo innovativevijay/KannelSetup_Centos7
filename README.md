@@ -43,7 +43,7 @@ cmd : curl -O -k https://www.kannel.org/download/1.4.5/gateway-1.4.5.tar.gz
 cmd : tar -xvzf gateway-1.4.5.tar.gz
 cmd : rm -rf gateway-1.4.5.zip (Remove)
 cmd : cd gateway-1.4.5
-cmd : ./configure   --prefix=/usr/local/gateway-1.4.5
+cmd : ./configure   --prefix=/usr/local/gateway-1.4.5 --with-mysql
 cmd : make
 cmd : make install
 ```
